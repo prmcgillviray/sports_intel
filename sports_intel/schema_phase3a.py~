@@ -1,0 +1,107 @@
+import duckdb
+
+DB_PATH = "db/features.duckdb"
+
+POINT_SENTINEL = -999999.0
+
+
+def main():
+    con = duckdb.connect(DB_PATH)
+
+    con.execute("""
+    CREATE TABLE IF NOT EXISTS odds_snapshots (
+        snapshot_id TEXT PRIMARY KEY,
+        fetched_at_local TIMESTAMP,
+        source TEXT,
+        markets TEXT
+    );
+    """)
+
+    # NOTE: DuckDB does not allow expressions inside PRIMARY KEY definitions.
+    # We store point_key = COALESCE(point, POINT_SENTINEL) as a real column and key on that.
+    con.execute(f"""
+    CREATE TABLE IF NOT EXISTS odds_lines (
+        snapshot_id TEXT,
+        source_event_id TEXT,
+        commence_time_utc TIMESTAMP,
+        home_team TEXT,
+        away_team TEXT,
+        bookmaker TEXT,
+        market TEXT,
+        outcome_name TEXT,
+        price INTEGER,
+        point DOUBLE,
+        point_key DOUBLE,
+        PRIMARY KEY (snapshot_id, bookmaker, market, source_event_id, outcome_name, point_key)
+    );
+    """)
+
+    # Migration: if table existed from older versions without point_key, add it.
+    cols = con.execute("PRAGMA table_info('odds_lines')").fetchall()
+    if cols and not any(c[1] == "point_key" for c in cols):
+        con.execute("ALTER TABLE odds_lines ADD COLUMN point_key DOUBLE;")
+        # Backfill existing rows (if any) to stable sentinel
+        con.execute(f"UPDATE odds_lines SET point_key = COALESCE(point, {POINT_SENTINEL});")
+        print("Added odds_lines.point_key and backfilled.")
+
+    con.execute("""
+    CREATE TABLE IF NOT EXISTS market_probs (
+        snapshot_id TEXT,
+        source_event_id TEXT,
+        commence_time_utc TIMESTAMP,
+        home_team TEXT,
+        away_team TEXT,
+        market TEXT,
+        home_prob DOUBLE,
+        away_prob DOUBLE,
+        draw_prob DOUBLE,
+        PRIMARY KEY (snapshot_id, source_event_id, market)
+    );
+    """)
+
+    con.execute("""
+    CREATE TABLE IF NOT EXISTS odds_event_match (
+        snapshot_id TEXT,
+        source_event_id TEXT,
+        event_id TEXT,
+        status TEXT,
+        reason TEXT,
+        PRIMARY KEY (snapshot_id, source_event_id)
+    );
+    """)
+
+    con.execute("""
+    CREATE TABLE IF NOT EXISTS market_probs_consensus (
+        snapshot_id TEXT,
+        event_id TEXT,
+        market TEXT,
+        home_prob DOUBLE,
+        away_prob DOUBLE,
+        draw_prob DOUBLE,
+        matched_method TEXT,
+        PRIMARY KEY (snapshot_id, event_id, market)
+    );
+    """)
+
+    con.execute("""
+    CREATE TABLE IF NOT EXISTS market_edges (
+        snapshot_id TEXT,
+        event_id TEXT,
+        market TEXT,
+        home_prob_fair DOUBLE,
+        away_prob_fair DOUBLE,
+        home_prob_model DOUBLE,
+        away_prob_model DOUBLE,
+        edge_home DOUBLE,
+        edge_away DOUBLE,
+        shrink_factor DOUBLE,
+        PRIMARY KEY (snapshot_id, event_id, market)
+    );
+    """)
+
+    con.close()
+    print("Phase 3A schema initialized successfully.")
+
+
+if __name__ == "__main__":
+    main()

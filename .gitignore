@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.venv/
+venv/
+
+# Local data / DB
+db/*.duckdb
+db/*.duckdb.wal
+db/*.duckdb.tmp
+db/*.duckdb-shm
+
+# Cache / temp
+cache/
+*.log
+
+# Secrets
+.env
+.env.*
+secrets/

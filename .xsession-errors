@@ -1,0 +1,1523 @@
+Xsession: X session started for pat at Mon Jan 19 07:31:26 PM EST 2026
+dbus-update-activation-environment: setting DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+xrdb: Can't open display ''
+xhost:  unable to open display ""
+dbus-update-activation-environment: setting USER=pat
+dbus-update-activation-environment: setting LANGUAGE=en_US.UTF-8
+dbus-update-activation-environment: setting TEXTDOMAIN=pam_chksshpwd
+dbus-update-activation-environment: setting XDG_SESSION_TYPE=wayland
+dbus-update-activation-environment: setting HOME=/home/pat
+dbus-update-activation-environment: setting DESKTOP_SESSION=rpd-labwc
+dbus-update-activation-environment: setting DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+dbus-update-activation-environment: setting LOGNAME=pat
+dbus-update-activation-environment: setting XDG_SESSION_CLASS=user
+dbus-update-activation-environment: setting PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games
+dbus-update-activation-environment: setting XDG_RUNTIME_DIR=/run/user/1000
+dbus-update-activation-environment: setting LANG=en_US.UTF-8
+dbus-update-activation-environment: setting XDG_SESSION_DESKTOP=rpd-labwc
+dbus-update-activation-environment: setting XDG_GREETER_DATA_DIR=/var/lib/lightdm/data/pat
+dbus-update-activation-environment: setting SHELL=/bin/bash
+dbus-update-activation-environment: setting GDMSESSION=rpd-labwc
+dbus-update-activation-environment: setting NO_AT_BRIDGE=1
+dbus-update-activation-environment: setting GPG_AGENT_INFO=/run/user/1000/gnupg/S.gpg-agent:0:1
+dbus-update-activation-environment: setting LC_ALL=en_US.UTF-8
+dbus-update-activation-environment: setting PWD=/home/pat
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+pgrep: pattern that searches for process name longer than 15 characters will result in zero matches
+Try `pgrep -f' option to match against the complete command line.
+pgrep: pattern that searches for process name longer than 15 characters will result in zero matches
+Try `pgrep -f' option to match against the complete command line.
+configuration for profile '<anonymous at line 1, col 9>' applied
+
+(polkit-mate-authentication-agent-1:1425): GLib-CRITICAL **: 19:31:36.190: g_variant_new_string: assertion 'string != NULL' failed
+
+(polkit-mate-authentication-agent-1:1425): polkit-mate-1-WARNING **: 19:31:36.193: Failed to register client: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name org.gnome.SessionManager was not provided by any .service files
+** Message: 19:31:37.766: batt: battery 0 not found
+** Message: 19:31:38.311: up: Checking for updates
+** Message: 19:31:43.206: up: Cache updated - comparing versions
+** Message: 20:00:21.810: up: Check complete - 149 updates available
+00:09:08.357 [ERROR] [libseat] [libseat/backend/logind.c:116] Could not stat path '/dev/input/event9'
+00:09:08.357 [ERROR] [backend/session/session.c:331] Failed to open device: '/dev/input/event9': No such file or directory
+00:09:08.384 [ERROR] [libseat] [libseat/backend/logind.c:116] Could not stat path '/dev/input/event8'
+00:09:08.385 [ERROR] [backend/session/session.c:331] Failed to open device: '/dev/input/event8': No such file or directory
+00:09:08.393 [ERROR] [libseat] [libseat/backend/logind.c:116] Could not stat path '/dev/input/event7'
+00:09:08.394 [ERROR] [backend/session/session.c:331] Failed to open device: '/dev/input/event7': No such file or directory
+00:09:08.398 [ERROR] [libseat] [libseat/backend/logind.c:116] Could not stat path '/dev/input/event4'
+00:09:08.398 [ERROR] [backend/session/session.c:331] Failed to open device: '/dev/input/event4': No such file or directory
+00:09:08.765 [ERROR] [libseat] [libseat/backend/logind.c:116] Could not stat path '/dev/input/event7'
+00:09:08.765 [ERROR] [backend/session/session.c:331] Failed to open device: '/dev/input/event7': No such file or directory
+00:09:08.820 [ERROR] [libseat] [libseat/backend/logind.c:124] Could not take device: No such device
+00:09:08.820 [ERROR] [backend/session/session.c:331] Failed to open device: '/dev/input/event4': Resource temporarily unavailable
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+21:34:50.975 [ERROR] [libinput] event4  - Logitech K400 Plus: client bug: event processing lagging behind by 66ms, your system is too slow
+
+21:34:51.621 [ERROR] [libinput] event4  - Logitech K400 Plus: client bug: event processing lagging behind by 48ms, your system is too slow
+
+[4849:4891:0120/173500.585078:ERROR:google_apis/gcm/engine/registration_request.cc:292] Registration response error message: DEPRECATED_ENDPOINT
+[4911:4911:0120/173502.881044:ERROR:gpu/command_buffer/service/shared_image/shared_image_manager.cc:393] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+[4911:4911:0120/173503.006441:ERROR:gpu/command_buffer/service/shared_image/shared_image_manager.cc:393] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+[4911:4911:0120/173503.087874:ERROR:gpu/command_buffer/service/shared_image/shared_image_manager.cc:393] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+Fontconfig error: Cannot load default config file: No such file: (null)
+[4849:4891:0120/173529.232047:ERROR:google_apis/gcm/engine/registration_request.cc:292] Registration response error message: DEPRECATED_ENDPOINT
+21:35:31.225 [ERROR] [libinput] event4  - Logitech K400 Plus: client bug: event processing lagging behind by 21ms, your system is too slow
+
+21:35:55.160 [ERROR] [libinput] event4  - Logitech K400 Plus: client bug: event processing lagging behind by 21ms, your system is too slow
+
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+** Message: 20:00:08.622: up: Checking for updates
+** Message: 20:00:11.430: up: Cache updated - comparing versions
+** Message: 20:00:17.939: up: Check complete - 149 updates available
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+** Message: 20:00:08.622: up: Checking for updates
+** Message: 20:00:17.262: up: Error updating cache - E: https://pkgs.tailscale.com/stable/debian trixie InRelease is not (yet) available (Temporary failure resolving 'pkgs.tailscale.com')
+E: https://apt.syncthing.net syncthing InRelease is not (yet) available (Temporary failure resolving 'apt.syncthing.net')
+E: http://archive.raspberrypi.com/debian trixie InRelease is not (yet) available (Temporary failure resolving 'archive.raspberrypi.com')
+E: http://deb.debian.org/debian-security trixie-security InRelease is not (yet) available (Temporary failure resolving 'deb.debian.org')
+E: http://deb.debian.org/debian trixie-updates InRelease is not (yet) available (Temporary failure resolving 'deb.debian.org')
+E: http://deb.debian.org/debian trixie InRelease is not (yet) available (Temporary failure resolving 'deb.debian.org')
+
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+** Message: 20:00:08.620: up: Checking for updates
+** Message: 20:00:11.577: up: Cache updated - comparing versions
+** Message: 20:00:18.101: up: Check complete - 152 updates available
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied
+no profile matched
+applying profile '<anonymous at line 1, col 9>'
+applying profile output 'HDMI-A-1' on connected head 'HDMI-A-1'
+configuration for profile '<anonymous at line 1, col 9>' applied

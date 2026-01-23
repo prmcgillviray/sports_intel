@@ -1,0 +1,4 @@
+profile {
+		output HDMI-A-1 enable scale 1.000000 mode 4096x2160@30.000 position 0,0 transform normal
+}
+

@@ -1,0 +1,6 @@
+[default-routes]
+alsa_card.platform-fe00b840.mailbox:output:analog-output={"channelMap":["FL", "FR"], "channelVolumes":[0.613114, 0.613114], "mute":false, "latencyOffsetNsec":0}
+alsa_card.platform-fe00b840.mailbox:profile:output:stereo-fallback=["analog-output"]
+alsa_card.platform-fef00700.hdmi:output:hdmi-output-0={"latencyOffsetNsec":0, "mute":false, "iec958Codecs":["PCM", "DTS", "AC3", "EAC3", "TrueHD", "DTS-HD"], "channelVolumes":[0.063997, 0.063997], "channelMap":["FL", "FR"]}
+alsa_card.platform-fef00700.hdmi:profile:off=["hdmi-output-0"]
+alsa_card.platform-fef00700.hdmi:profile:output:hdmi-stereo=["hdmi-output-0"]
