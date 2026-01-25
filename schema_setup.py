@@ -3,33 +3,18 @@ from pathlib import Path
 
 DB_PATH = Path("db/features.duckdb")
 
-
-def col_exists(con, table, col):
-    return any(r[1] == col for r in con.execute(
-        f"PRAGMA table_info('{table}')"
-    ).fetchall())
-
-
-def ensure_col(con, table, col, ddl):
-    if not col_exists(con, table, col):
-        con.execute(f"ALTER TABLE {table} ADD COLUMN {ddl};")
-        print(f"Added column: {table}.{col}")
-
-
 def main():
     DB_PATH.parent.mkdir(parents=True, exist_ok=True)
     con = duckdb.connect(str(DB_PATH))
 
-    # -------------------------
-    # CORE TABLES
-    # -------------------------
-
+    # --- PHASE 1: Core Event Data ---
     con.execute("""
     CREATE TABLE IF NOT EXISTS events (
         event_id TEXT PRIMARY KEY,
         sport TEXT,
         league TEXT,
-        start_time_utc TIMESTAMP
+        start_time_utc TIMESTAMP,
+        event_date_local DATE
     );
     """)
 
@@ -53,61 +38,86 @@ def main():
     );
     """)
 
-    # -------------------------
-    # NHL GAME FEATURES (1 ROW PER GAME)
-    # -------------------------
-
-    con.execute("""
-    CREATE TABLE IF NOT EXISTS nhl_game_features (
-        event_id TEXT PRIMARY KEY,
-        start_time_utc TIMESTAMP,
-        game_type INTEGER,
-        season INTEGER
-    );
-    """)
-
-    ensure_col(con, "nhl_game_features", "start_time_utc", "start_time_utc TIMESTAMP")
-    ensure_col(con, "nhl_game_features", "game_type", "game_type INTEGER")
-    ensure_col(con, "nhl_game_features", "season", "season INTEGER")
-
-    # -------------------------
-    # NHL TEAM GAME STATS (PER GAME)
-    # -------------------------
-
+    # --- PHASE 2: Stats & Features ---
     con.execute("""
     CREATE TABLE IF NOT EXISTS nhl_team_game_stats (
         team_abbrev TEXT,
         game_id TEXT,
+        event_id TEXT,
+        opponent_abbrev TEXT,
+        is_home BOOLEAN,
+        start_time_utc TIMESTAMP,
         goals_for INTEGER,
         goals_against INTEGER,
         shots_for INTEGER,
         shots_against INTEGER,
-        is_home BOOLEAN,
+        powerplay_goals_for INTEGER,
+        powerplay_opportunities INTEGER,
         game_date_local DATE,
+        created_at_utc TIMESTAMP,
         PRIMARY KEY (team_abbrev, game_id)
     );
     """)
-
-    # -------------------------
-    # NHL TEAM GAME FEATURES (ROLLING / REST)
-    # -------------------------
 
     con.execute("""
     CREATE TABLE IF NOT EXISTS nhl_team_game_features (
         event_date_local DATE,
         team_abbrev TEXT,
+        event_id TEXT,
         rest_days INTEGER,
         is_b2b BOOLEAN,
         l10_goal_diff DOUBLE,
         l10_shot_diff DOUBLE,
+        created_at_utc TIMESTAMP,
         updated_at_utc TIMESTAMP,
         PRIMARY KEY (event_date_local, team_abbrev)
     );
     """)
 
-    con.close()
-    print("Schema initialized / migrated successfully (Phase 1 + Phase 2A).")
+    # --- PHASE 3: Odds & Markets ---
+    con.execute("""
+    CREATE TABLE IF NOT EXISTS odds_snapshots (
+        snapshot_id TEXT PRIMARY KEY,
+        fetched_at_local TIMESTAMP,
+        source TEXT,
+        markets TEXT
+    );
+    """)
 
+    con.execute("""
+    CREATE TABLE IF NOT EXISTS odds_lines (
+        snapshot_id TEXT,
+        source_event_id TEXT,
+        commence_time_utc TIMESTAMP,
+        home_team TEXT,
+        away_team TEXT,
+        bookmaker TEXT,
+        market TEXT,
+        outcome_name TEXT,
+        price DOUBLE,
+        point DOUBLE,
+        point_key DOUBLE,
+        PRIMARY KEY (snapshot_id, source_event_id, bookmaker, market, outcome_name, point_key)
+    );
+    """)
+
+    con.execute("""
+    CREATE TABLE IF NOT EXISTS market_probs (
+        snapshot_id TEXT,
+        source_event_id TEXT,
+        commence_time_utc TIMESTAMP,
+        home_team TEXT,
+        away_team TEXT,
+        market TEXT,
+        home_prob DOUBLE,
+        away_prob DOUBLE,
+        draw_prob DOUBLE,
+        PRIMARY KEY (snapshot_id, source_event_id, market)
+    );
+    """)
+
+    con.close()
+    print("Schema synchronized (Phase 1, 2, 3).")
 
 if __name__ == "__main__":
     main()
