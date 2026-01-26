@@ -74,6 +74,34 @@ def main():
     );
     """)
 
+    # --- PHASE 2B: Granular Player Stats ---
+    # (Fixed: Removed hashtags inside the SQL string)
+    con.execute("""
+    CREATE TABLE IF NOT EXISTS nhl_player_game_stats (
+        player_id TEXT,
+        name TEXT,
+        team_abbrev TEXT,
+        game_id TEXT,
+        event_date_local DATE,
+        position TEXT,
+        
+        goals INTEGER,
+        assists INTEGER,
+        points INTEGER,
+        plus_minus INTEGER,
+        pim INTEGER,
+        
+        shots INTEGER,
+        hits INTEGER,
+        blocks INTEGER,
+        toi_seconds INTEGER,
+        pp_toi_seconds INTEGER,
+        sh_toi_seconds INTEGER,
+        
+        PRIMARY KEY (player_id, game_id)
+    );
+    """)
+
     # --- PHASE 3: Odds & Markets ---
     con.execute("""
     CREATE TABLE IF NOT EXISTS odds_snapshots (
@@ -117,7 +145,7 @@ def main():
     """)
 
     con.close()
-    print("Schema synchronized (Phase 1, 2, 3).")
+    print("Schema synchronized (Phase 1, 2, 2B, 3).")
 
 if __name__ == "__main__":
     main()
