@@ -1,6 +1,11 @@
 import streamlit as st
+import duckdb
+import pandas as pd
+import os
 
-# 1. Page Config (Must be the first Streamlit command)
+# -----------------------------------------------------------------------------
+# 1. PAGE CONFIGURATION (MUST BE FIRST)
+# -----------------------------------------------------------------------------
 st.set_page_config(
     page_title="Oracle Pi-Stream",
     page_icon="🔮",
@@ -8,117 +13,238 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# 2. Inject Custom CSS (The "Cyberpunk Skin")
+# -----------------------------------------------------------------------------
+# 2. INJECT CYBERPUNK STYLES (TAILWIND CSS)
+# -----------------------------------------------------------------------------
 st.markdown("""
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    
     <style>
-        /* Import Fonts */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;700&display=swap');
-
-        /* --- GLOBAL STYLES --- */
+        /* OVERRIDE STREAMLIT DEFAULTS */
         .stApp {
-            background-color: #0f172a; /* Slate 900 */
-            color: #e2e8f0;
-            font-family: 'Inter', sans-serif;
+            background-color: #020617; /* Slate 950 */
         }
         
-        /* Headings */
-        h1, h2, h3 {
-            font-family: 'JetBrains Mono', monospace !important;
-            color: #fff !important;
-            letter-spacing: -0.5px;
-        }
-
-        /* --- METRIC CARDS (Top Row) --- */
-        div[data-testid="stMetric"] {
-            background-color: #1e293b; /* Slate 800 */
-            border: 1px solid #334155;
-            padding: 15px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-        div[data-testid="stMetricLabel"] {
-            color: #94a3b8; /* Slate 400 */
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        div[data-testid="stMetricValue"] {
-            color: #10b981; /* Neon Green */
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 700;
-        }
-
-        /* --- DATAFRAME / TABLES --- */
-        /* Force tables to blend in */
-        .stDataFrame {
-            border: 1px solid #334155;
-            border-radius: 8px;
-        }
-
-        /* --- SIDEBAR --- */
-        section[data-testid="stSidebar"] {
-            background-color: #020617; /* Darker Slate */
-            border-right: 1px solid #1e293b;
-        }
+        /* Hide Streamlit Header/Footer */
+        #MainMenu {visibility: hidden;}
+        footer {visibility: hidden;}
+        header {visibility: hidden;}
         
-        /* Remove default Streamlit top padding */
+        /* Adjust Padding */
         .block-container {
-            padding-top: 2rem;
+            padding-top: 1rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            max-width: 100%;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        
+        /* Sidebar Styling */
+        section[data-testid="stSidebar"] {
+            background-color: #0f172a;
+            border-right: 1px solid #1e293b;
         }
     </style>
 """, unsafe_allow_html=True)
-# Header
-st.title("ORACLE.PI // DASHBOARD")
-st.markdown("---")
 
-# The "Hero" Metrics Row
-col1, col2, col3, col4 = st.columns(4)
+# -----------------------------------------------------------------------------
+# 3. DATA LOADING ENGINE
+# -----------------------------------------------------------------------------
+def load_dashboard_data():
+    """Fetches combined schedule and odds data."""
+    db_path = 'db/features.duckdb'
+    if not os.path.exists(db_path):
+        return pd.DataFrame()
 
-with col1:
-    st.metric("Active Signals", "142", delta="12 new")
-with col2:
-    st.metric("Avg Edge", "+8.4%", delta="1.2%")
-with col3:
-    st.metric("24h ROI", "12.2%", delta="-0.5%")
-with col4:
-    # Custom HTML for the "Health" indicator since st.metric is simple
+    conn = duckdb.connect(db_path, read_only=True)
+    try:
+        # We try to join schedule and odds. 
+        # If the odds table is empty, this might return empty, so we use LEFT JOIN.
+        query = """
+            SELECT 
+                s.game_date,
+                s.game_time,
+                s.home_team,
+                s.away_team,
+                o.home_price,
+                o.away_price,
+                o.bookmaker
+            FROM nhl_schedule s
+            LEFT JOIN nhl_odds o ON s.game_id = o.game_id
+            WHERE strptime(s.game_date, '%Y-%m-%d') >= CURRENT_DATE
+            ORDER BY s.game_date, s.game_time
+            LIMIT 10
+        """
+        df = conn.execute(query).df()
+        conn.close()
+        return df
+    except Exception as e:
+        conn.close()
+        # Fallback if tables don't exist yet
+        return pd.DataFrame()
+
+# -----------------------------------------------------------------------------
+# 4. COMPONENT RENDERERS (HTML GENERATORS)
+# -----------------------------------------------------------------------------
+
+def render_header():
     st.markdown("""
-        <div style="background-color: #1e293b; padding: 10px; border-radius: 10px; border: 1px solid #334155; text-align: center;">
-            <span style="color: #94a3b8; font-size: 12px; text-transform: uppercase;">System Health</span><br>
-            <span style="color: #10b981; font-size: 24px; font-family: 'JetBrains Mono'; font-weight: bold;">99.8%</span>
-        </div>
-    """, unsafe_allow_html=True)
-    def render_custom_card(game_time, matchup, market, ai_prob, implied_prob):
-    # Calculate edge
-    edge = ai_prob - implied_prob
-    color = "#10b981" if edge > 5 else "#e2e8f0" # Green if high edge
-    
-    # This is RAW HTML matching your design
-    card_html = f"""
-    <div style="background-color: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 15px; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between;">
-        <div style="flex: 1;">
-            <div style="color: #94a3b8; font-size: 12px; font-family: 'JetBrains Mono';">{game_time}</div>
-            <div style="color: #fff; font-weight: 600;">{matchup}</div>
-        </div>
-        <div style="flex: 1; border-left: 1px solid #334155; padding-left: 15px;">
-            <div style="color: #94a3b8; font-size: 12px;">Market</div>
-            <div style="color: #e2e8f0;">{market}</div>
-        </div>
-        <div style="flex: 1; text-align: center;">
-            <div style="color: #94a3b8; font-size: 12px;">AI Prob</div>
-            <div style="color: #fff; font-family: 'JetBrains Mono'; font-weight: bold; font-size: 18px;">
-                {ai_prob}% <span style="width: 8px; height: 8px; background-color: #10b981; border-radius: 50%; display: inline-block;"></span>
+        <div class="flex items-center justify-between mb-8 p-4 border-b border-slate-800 bg-slate-900/50">
+            <div class="flex items-center gap-3">
+                <span class="text-3xl">🔮</span>
+                <h1 class="text-2xl font-bold tracking-wider text-white font-mono">ORACLE<span class="text-emerald-500">.PI</span></h1>
+            </div>
+            <div class="flex items-center gap-6">
+                <div class="flex flex-col items-end hidden md:flex">
+                    <span class="text-xs text-slate-400 font-mono">NEXT UPDATE</span>
+                    <span class="text-sm text-white font-mono">08:00 AM</span>
+                </div>
+                <div class="flex items-center gap-2 bg-slate-800 px-3 py-1 rounded-full border border-slate-700">
+                    <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                    <span class="text-xs text-emerald-400 font-mono tracking-tight">PI_STREAM: CONNECTED</span>
+                </div>
             </div>
         </div>
-        <div style="flex: 1; text-align: right;">
-            <div style="color: #94a3b8; font-size: 12px;">Edge</div>
-            <div style="color: {color}; font-family: 'JetBrains Mono'; font-weight: bold; font-size: 18px;">+{edge:.1f}%</div>
-        </div>
-    </div>
-    """
-    st.markdown(card_html, unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
 
-# Example Usage (Replace this with your loop later)
-st.subheader("High Value Opportunities")
-render_custom_card("19:00 EST", "NYR vs BOS", "Home Win", 62.4, 55.0)
-render_custom_card("20:30 EST", "EDM vs ANA", "Over 6.5 Goals", 58.1, 48.0)
+def render_metrics():
+    # Helper to generate a single card HTML
+    def card(label, value, icon, color):
+        return f"""
+        <div class="bg-slate-900/80 backdrop-blur border border-slate-800 p-4 rounded-xl flex items-center justify-between shadow-lg">
+            <div>
+                <p class="text-xs text-slate-400 uppercase font-mono tracking-wider">{label}</p>
+                <p class="text-2xl font-bold text-white font-mono mt-1">{value}</p>
+            </div>
+            <div class="w-10 h-10 rounded-lg bg-{color}-500/20 flex items-center justify-center text-{color}-400">
+                <span style="font-size: 20px;">{icon}</span>
+            </div>
+        </div>
+        """
+    
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        st.markdown(card("Active Signals", "12", "📡", "emerald"), unsafe_allow_html=True)
+    with col2:
+        st.markdown(card("Avg Edge", "+4.2%", "📈", "blue"), unsafe_allow_html=True)
+    with col3:
+        st.markdown(card("Est. ROI", "12.2%", "💰", "purple"), unsafe_allow_html=True)
+    with col4:
+        st.markdown(card("Pi Health", "100%", "⚡", "emerald"), unsafe_allow_html=True)
+
+# -----------------------------------------------------------------------------
+# 5. MAIN APP LOGIC
+# -----------------------------------------------------------------------------
+
+# A. Render Header & Stats
+render_header()
+render_metrics()
+st.markdown("<div class='mb-8'></div>", unsafe_allow_html=True) # Spacer
+
+# B. Sidebar Filters
+with st.sidebar:
+    st.markdown("### 🎛️ Control Panel")
+    sport_filter = st.selectbox("Sport", ["All Sports", "NHL", "NBA", "EPL"])
+    min_edge = st.slider("Min Edge %", 0, 20, 5)
+    st.divider()
+    if st.button("🔄 Force Refresh Data"):
+        st.cache_data.clear()
+        st.rerun()
+
+# C. Load Data
+df = load_dashboard_data()
+
+# D. Render Main Table Header
+st.markdown(f"""
+<div class="bg-slate-900/90 backdrop-blur border border-slate-800 rounded-xl overflow-hidden shadow-2xl">
+    <div class="p-4 border-b border-slate-800 flex justify-between items-center">
+        <h3 class="text-white font-mono font-bold">TODAY'S BOARD</h3>
+        <span class="text-xs text-slate-500 font-mono">LIVE FEED // {len(df)} GAMES DETECTED</span>
+    </div>
+    <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+            <thead>
+                <tr class="bg-slate-950/50 border-b border-slate-800 text-xs uppercase tracking-wider text-slate-400 font-mono">
+                    <th class="p-4">Time</th>
+                    <th class="p-4">Matchup</th>
+                    <th class="p-4 text-center">Home Odds</th>
+                    <th class="p-4 text-center">Away Odds</th>
+                    <th class="p-4 text-center">AI Prob</th>
+                    <th class="p-4 text-center">Edge</th>
+                    <th class="p-4 text-right">Details</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800 text-sm text-slate-200">
+""", unsafe_allow_html=True)
+
+# E. Render Table Rows
+if not df.empty:
+    for index, row in df.iterrows():
+        # Clean up data for display
+        home = row['home_team']
+        away = row['away_team']
+        time = row['game_time'] if row['game_time'] else "TBD"
+        
+        # Determine odds display (handle missing)
+        h_odds = row['home_price'] if pd.notna(row['home_price']) else "-"
+        a_odds = row['away_price'] if pd.notna(row['away_price']) else "-"
+        
+        # Simulate AI Calculation (Placeholder until Model is fully integrated)
+        ai_prob = 52.5 # Fake value for visual testing
+        edge_val = 2.5 # Fake value for visual testing
+        edge_color = "text-emerald-400" if edge_val > 0 else "text-slate-400"
+        
+        row_html = f"""
+            <tr class="hover:bg-slate-800/50 transition-colors cursor-pointer group">
+                <td class="p-4 text-slate-400 font-mono text-xs whitespace-nowrap">{time}</td>
+                <td class="p-4">
+                    <div class="flex items-center gap-3">
+                        <span class="font-bold text-white">{home}</span>
+                        <span class="text-xs text-slate-500">vs</span>
+                        <span class="font-bold text-white">{away}</span>
+                    </div>
+                </td>
+                <td class="p-4 text-center font-mono text-slate-300">{h_odds}</td>
+                <td class="p-4 text-center font-mono text-slate-300">{a_odds}</td>
+                <td class="p-4 text-center font-mono font-bold text-white relative">
+                    {ai_prob}%
+                    <div class="absolute top-3 right-4 w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div>
+                </td>
+                <td class="p-4 text-center font-mono {edge_color} font-bold">+{edge_val}%</td>
+                <td class="p-4 text-right">
+                    <button class="p-1.5 rounded-lg bg-slate-800 text-slate-400 hover:bg-emerald-500 hover:text-white transition-all">
+                        VIEW
+                    </button>
+                </td>
+            </tr>
+        """
+        st.markdown(row_html, unsafe_allow_html=True)
+else:
+    # Empty State Row
+    st.markdown("""
+        <tr>
+            <td colspan="7" class="p-8 text-center text-slate-500 font-mono">
+                <div class="flex flex-col items-center gap-2">
+                    <span class="text-2xl">💤</span>
+                    <span>NO GAMES FOUND IN DATABASE</span>
+                    <span class="text-xs text-slate-600">Run ./daily_runner.sh to populate data</span>
+                </div>
+            </td>
+        </tr>
+    """, unsafe_allow_html=True)
+
+# F. Close Table HTML
+st.markdown("""
+            </tbody>
+        </table>
+    </div>
+</div>
+""", unsafe_allow_html=True)
