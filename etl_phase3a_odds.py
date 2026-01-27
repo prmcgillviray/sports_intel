@@ -1,8 +1,10 @@
 import os
+from dotenv import load_dotenv
 import uuid
 from datetime import datetime
 import time
 import random
+load_dotenv()
 import requests
 import duckdb
 from dateutil import tz
