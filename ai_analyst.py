@@ -1,220 +1,133 @@
-from google import genai
-import duckdb
+import pandas as pd
 import os
 from dotenv import load_dotenv
-import pandas as pd
+from google import genai
 from datetime import datetime
+import time
 
 # --- CONFIG ---
-script_dir = os.path.dirname(os.path.abspath(__file__))
-env_path = os.path.join(script_dir, '.env')
-load_dotenv(env_path)
+BASE_DIR = "/home/pat/sports_intel"
+TARGETS_PATH = f"{BASE_DIR}/prop_targets.csv"
+HISTORY_PATH = f"{BASE_DIR}/bet_history.csv"
+REPORT_PATH = f"{BASE_DIR}/oracle_report.md"
+ENV_PATH = f"{BASE_DIR}/.env"
+
+# Load API Key
+load_dotenv(ENV_PATH)
 api_key = os.getenv("GEMINI_KEY")
 
-if not api_key:
-    print("❌ NO API KEY FOUND.")
-    exit()
+def generate_fallback_report(error_msg, targets_df, stats_txt, today_str):
+    """Writes a clean report using ONLY today's data if API fails."""
+    
+    # FILTER: STRICTLY TODAY'S GAMES
+    if not targets_df.empty and 'Date' in targets_df.columns:
+        daily_targets = targets_df[targets_df['Date'] == today_str]
+    else:
+        daily_targets = pd.DataFrame() # No match if date column missing
 
-try:
-    client = genai.Client(api_key=api_key)
-except:
-    print("❌ CLIENT INIT FAILED.")
-    exit()
+    if not daily_targets.empty:
+        # Sort by Edge to find the best pick for TODAY
+        daily_targets = daily_targets.sort_values(by='Edge', ascending=False)
+        top_pick = daily_targets.iloc[0]
+        
+        pick_txt = f"**🔒 LOCK:** {top_pick['Player']} ({top_pick['Team']}) | {top_pick['Type']} | Edge: {top_pick['Edge']}"
+        reason = f"Reason: {top_pick['Reason']}"
+    else:
+        pick_txt = "**🔒 LOCK:** No clear signals for today."
+        reason = f"Market is tight or no games found for {today_str}."
 
-def analyze_slate():
-    # ⚡ FORCE GEMINI 3.0
-    model_id = 'gemini-3-flash-preview'
-    
-    # 1. SET THE DATE (Hardcoded for accuracy)
-    target_date = datetime.now().strftime('%Y-%m-%d')
-    # Use this if testing for a specific past date:
-    # target_date = '2026-01-28' 
-    
-    db_path = os.path.join(script_dir, 'db/features.duckdb')
-    conn = duckdb.connect(db_path, read_only=True)
-    
-    print(f"🧠 ANALYST (Level 5): FILTERING INTEL FOR {target_date}...")
-    
-    # 2. GET ONLY TODAY'S GAMES (The "Allow List")
-    query_games = f"""
-        WITH latest_odds AS (
-            SELECT * FROM odds_lines
-            QUALIFY ROW_NUMBER() OVER (PARTITION BY home_team, market, outcome_name ORDER BY snapshot_id DESC) = 1
-        ),
-        organized_odds AS (
-            SELECT home_team, away_team,
-                MAX(CASE WHEN market='h2h' AND outcome_name=home_team THEN price END) as home_price,
-                MAX(CASE WHEN market='h2h' AND outcome_name=away_team THEN price END) as away_price,
-                MAX(CASE WHEN market='totals' AND outcome_name='Over' THEN point END) as total_line
-            FROM latest_odds
-            GROUP BY home_team, away_team
-        )
-        SELECT 
-            o.home_team, o.away_team, 
-            COALESCE(o.home_price, 0) as home_price, 
-            COALESCE(o.away_price, 0) as away_price,
-            COALESCE(o.total_line, 6.5) as total
-        FROM organized_odds o
-        JOIN nhl_schedule s ON s.home_team = o.home_team
-        WHERE s.game_date = '{target_date}' 
+    report = f"""
+### ⚠️ Oracle Status: DEFCON 4
+*Date: {today_str}*
+
+**SYSTEM NOTE:** AI Link is temporarily rate-limited. Switching to Tactical Mode.
+
+**📊 SYNDICATE STATUS:**
+{stats_txt}
+
+**🎯 TOP TARGET (Today Only):**
+* {pick_txt}
+* {reason}
+
+*(Full AI analysis will return shortly. Check raw data tables below.)*
     """
+    return report
+
+def generate_report():
+    print("🤖 ANALYST: Generating Morning Briefing...")
     
-    try:
-        games_df = conn.execute(query_games).df()
-        if games_df.empty: 
-            print(f"   [!] No games found for {target_date}.")
-            return
-            
-        # CREATE THE "ALLOW LIST" (Teams playing tonight)
-        # We need both full names (for Odds) and Abbrevs (for Stats)
-        # We'll fetch the abbrevs from the schedule table to match.
-        
-        home_teams = games_df['home_team'].tolist()
-        away_teams = games_df['away_team'].tolist()
-        active_teams_full = home_teams + away_teams
-        
-        print(f"   -> ACTIVE TEAMS: {active_teams_full}")
-        
-    except Exception as e:
-        print(f"❌ GAME FETCH ERROR: {e}")
+    if not api_key:
+        print("❌ SKIPPING: No Gemini API Key found.")
         return
 
-    # 3. GET TACTICAL DNA (FILTERED)
-    # Only fetch stats for the teams in 'active_teams_full'
-    try:
-        # Note: We need to match Team Name (Full) to Abbrev if tables differ.
-        # Assuming team_tactics uses Full Name? Let's check logic.
-        # If tactical_brain saved Abbrevs (e.g. TOR), we might have a mismatch.
-        # Let's grab everything and filter in Pandas to be safe.
-        
-        tactics_raw = conn.execute("SELECT * FROM team_tactics").df()
-        
-        # Filter: Keep row if 'team' is in our active list
-        # (This assumes tactical_brain saved full names like 'Toronto Maple Leafs')
-        tactics_filtered = tactics_raw[tactics_raw['team'].isin(active_teams_full)]
-        
-        if tactics_filtered.empty:
-            tactics_csv = "No Tactical Data for these specific teams (Run tactical_brain.py)."
-        else:
-            tactics_csv = tactics_filtered.to_csv(index=False)
-            
-    except Exception as e:
-        tactics_csv = f"TACTICAL ERROR: {e}"
+    # 1. GET TODAY'S DATE (Match the Dashboard's logic)
+    today_str = datetime.now().strftime("%Y-%m-%d")
+    
+    # 2. LOAD DATA
+    df_targets = pd.DataFrame()
+    active_targets = pd.DataFrame()
+    targets_txt = "No targets for today."
+    
+    if os.path.exists(TARGETS_PATH):
+        try:
+            df_targets = pd.read_csv(TARGETS_PATH)
+            if not df_targets.empty:
+                # CRITICAL: Filter for TODAY only
+                if 'Date' in df_targets.columns:
+                    active_targets = df_targets[df_targets['Date'] == today_str]
+                else:
+                    active_targets = df_targets # Fallback
 
-    # 4. GET SNIPERS (FILTERED)
-    # Only fetch players whose 'team' is active tonight
+                if not active_targets.empty:
+                    targets_txt = active_targets.to_string(index=False)
+                else:
+                    targets_txt = f"No targets found for date: {today_str}"
+        except: pass
+
+    # 3. LOAD HISTORY
+    stats_txt = "Ledger Pending."
+    if os.path.exists(HISTORY_PATH):
+        try:
+            df_hist = pd.read_csv(HISTORY_PATH)
+            if not df_hist.empty:
+                wins = len(df_hist[df_hist['Result'] == 'WIN'])
+                losses = len(df_hist[df_hist['Result'] == 'LOSS'])
+                profit = df_hist['Profit'].sum()
+                stats_txt = f"Wins: {wins} | Losses: {losses} | Net: {profit:+.1f} U"
+        except: pass
+
+    # 4. TRY AI GENERATION
     try:
-        # We need a map of Full Name -> Abbrev to filter players correctly
-        # or just filter by checking if the player's team is active.
-        # Let's do a SQL join to be precise.
+        client = genai.Client(api_key=api_key)
+        date_display = datetime.now().strftime("%A, %B %d")
         
-        # Convert list to SQL-friendly string
-        active_teams_sql = "', '".join(active_teams_full)
+        prompt = f"""
+        You are 'The Oracle', an elite sports betting AI.
+        Date: {date_display}
         
-        player_query = f"""
-            WITH trends AS (
-                SELECT name, team_abbrev, 
-                ROUND(AVG(shots), 2) as Season_Avg, 
-                ROUND(AVG(CASE WHEN event_date_local >= (CURRENT_DATE - INTERVAL 7 DAY) THEN shots END), 2) as L5_Avg
-                FROM nhl_player_game_stats
-                -- Join on schedule or team table to ensure we only get active players?
-                -- For now, let's just grab the hot ones and trust the Prompt instruction, 
-                -- OR better: The "Blinders" - only grab stats if we know the team name.
-                -- Since player stats usually have 'team_abbrev' (NYR) and schedule has 'New York Rangers',
-                -- mapping is tricky without a lookup table. 
-                -- STRATEGY: Grab top 50, let Python filter partial matches.
-                GROUP BY name, team_abbrev
-                HAVING COUNT(*) >= 1
-            )
-            SELECT * FROM trends WHERE L5_Avg >= 3.0 ORDER BY L5_Avg DESC
+        STATUS: {stats_txt}
+        TARGETS FOR TODAY ({today_str}):
+        {targets_txt}
+        
+        TASK: Write a 100-word executive summary for TODAY'S games only.
+        If no targets exist for today, state that clearly. Do NOT mention tomorrow's games.
         """
-        all_snipers = conn.execute(player_query).df()
         
-        # Python Filter: Simple heuristic map (NYR -> New York Rangers)
-        # This is a bit hacky but prevents the hallucination.
-        # We only keep players where their 'team_abbrev' roughly matches an active team string
-        # e.g. "NYR" is in "New York Rangers" (False). 
-        # We need a real map.
-        
-        # QUICK MAP (Common Abbrevs) - Add more if needed
-        team_map = {
-            'ANA': 'Anaheim Ducks', 'BOS': 'Boston Bruins', 'BUF': 'Buffalo Sabres',
-            'CAR': 'Carolina Hurricanes', 'CBJ': 'Columbus Blue Jackets', 'CGY': 'Calgary Flames',
-            'CHI': 'Chicago Blackhawks', 'COL': 'Colorado Avalanche', 'DAL': 'Dallas Stars',
-            'DET': 'Detroit Red Wings', 'EDM': 'Edmonton Oilers', 'FLA': 'Florida Panthers',
-            'LAK': 'Los Angeles Kings', 'MIN': 'Minnesota Wild', 'MTL': 'Montréal Canadiens',
-            'NJD': 'New Jersey Devils', 'NSH': 'Nashville Predators', 'NYI': 'New York Islanders',
-            'NYR': 'New York Rangers', 'OTT': 'Ottawa Senators', 'PHI': 'Philadelphia Flyers',
-            'PIT': 'Pittsburgh Penguins', 'SEA': 'Seattle Kraken', 'SJS': 'San Jose Sharks',
-            'STL': 'St. Louis Blues', 'TBL': 'Tampa Bay Lightning', 'TOR': 'Toronto Maple Leafs',
-            'UTA': 'Utah Mammoth', 'VAN': 'Vancouver Canucks', 'VGK': 'Vegas Golden Knights',
-            'WPG': 'Winnipeg Jets', 'WSH': 'Washington Capitals'
-        }
-        
-        # Add a 'full_team' column to snipers
-        all_snipers['full_team'] = all_snipers['team_abbrev'].map(team_map)
-        
-        # FILTER: Only keep snipers playing tonight
-        active_snipers = all_snipers[all_snipers['full_team'].isin(active_teams_full)]
-        
-        if active_snipers.empty:
-            players_csv = "No 'Hot' Snipers (>3.0 L5) playing in tonight's games."
-        else:
-            # Drop the helper column for cleaner output
-            players_csv = active_snipers.drop(columns=['full_team']).head(15).to_csv(index=False)
+        response = client.models.generate_content(
+            model="gemini-2.0-flash", 
+            contents=prompt
+        )
+        report_content = response.text
+        print("✅ AI Report Generated.")
 
-    except Exception as e: 
-        players_csv = f"PLAYER DATA ERROR: {e}"
+    except Exception as e:
+        print(f"⚠️ API LIMIT HIT: Switching to Fallback Mode... ({e})")
+        # Pass today_str so fallback knows to filter
+        report_content = generate_fallback_report(str(e), df_targets, stats_txt, today_str)
 
-    conn.close()
-
-    # 5. THE PROMPT (Strict "Do Not Hallucinate" Instructions)
-    prompt = f"""
-    You are ORACLE.PI (Level 5 Sports Intelligence).
-    DATE: {target_date}
-    
-    You must ONLY analyze the games listed below in "OFFICIAL MATCHUPS".
-    If a team is not listed there, DO NOT MENTION THEM.
-    
-    === OFFICIAL MATCHUPS (Active Tonight) ===
-    {games_df.to_string(index=False)}
-    
-    === TACTICAL DNA (Only for Active Teams) ===
-    * hdc_per_game: High Danger Chances (Inner Slot). League Avg ~8.0.
-    * trap_index: Neutral Zone Clutter. High = Defensive.
-    {tactics_csv}
-    
-    === SNIPERS (Only for Active Teams) ===
-    (L5_Avg = Recent Shot Volume. Use this for Props)
-    {players_csv}
-    
-    MISSION:
-    1. **MATCH STYLES:** Compare HDC (High Danger Chances). Who creates more quality?
-    2. **PLAYER PROPS:** Recommend a player from the SNIPERS list if their L5_Avg is high.
-    3. **NO HALLUCINATIONS:** Do not invent games. Do not mix up teams.
-    
-    OUTPUT FORMAT:
-    
-    ## 🧊 ORACLE TACTICAL REPORT
-    
-    ### 🛡️ TACTICAL MATCHUPS
-    * **[Home] vs [Away]**: 
-      * **The Physics:** [Compare HDC & Trap Index]
-      * **The Edge:** [Why the math favors one side]
-      * **Pick:** [Team/Total]
-    
-    ### 💰 VALUE BETS
-    * 💎 **[Selection]**: [Reasoning]
-    """
-    
-    print("   -> Sending FILTERED PROFILE to Intelligence Engine...")
-    try:
-        response = client.models.generate_content(model=model_id, contents=prompt)
-        print("\n" + "="*80)
-        print(response.text)
-        print("="*80)
-        with open("oracle_report.md", "w") as f: f.write(response.text)
-    except Exception as e: print(f"❌ AI ERROR: {e}")
+    # 5. SAVE REPORT
+    with open(REPORT_PATH, "w") as f:
+        f.write(report_content)
 
 if __name__ == "__main__":
-    analyze_slate()
+    generate_report()

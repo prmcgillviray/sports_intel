@@ -1,101 +1,77 @@
-import requests
-import duckdb
-import pandas as pd
-import time
-from datetime import datetime
+import math
 
-# --- GEOMETRY ENGINE ---
-def get_zone(x, y):
-    if x is None or y is None: return "UNKNOWN"
-    abs_x, abs_y = abs(float(x)), abs(float(y))
-    
-    # 1. INNER SLOT (High Danger) - The "Home Plate"
-    if 69 <= abs_x <= 89 and abs_y <= 15: return "INNER_SLOT"
-    # 2. NEUTRAL ZONE (The Trap)
-    if abs_x < 25: return "NEUTRAL_ZONE"
-    # 3. DEEP ZONE (Forecheck)
-    if abs_x > 69: return "DEEP_ZONE"
-    
-    return "PERIMETER"
+"""
+TACTICAL BRAIN MODULE
+---------------------
+The mathematical core of THE ORACLE.
+Responsibility: Pure function calculations for EV, Kelly Criterion, and Odds Conversion.
+Philosophy: Stateless, high-performance, zero I/O.
+"""
 
-def fetch_game_pbp(game_id):
-    url = f"https://api-web.nhle.com/v1/gamecenter/{game_id}/play-by-play"
+def american_to_decimal(american_odds):
+    """
+    Converts American Odds (e.g., +150, -110) to Decimal Odds (e.g., 2.5, 1.909).
+    """
     try:
-        resp = requests.get(url, timeout=5); return resp.json() if resp.status_code == 200 else None
-    except: return None
+        if american_odds > 0:
+            return round(1 + (american_odds / 100), 3)
+        else:
+            return round(1 + (100 / abs(american_odds)), 3)
+    except Exception as e:
+        return 1.0  # Fail safe
 
-def process_tactics():
-    print("🧠 TACTICAL BRAIN 2.0: SCANNING OFFENSE & DEFENSE...")
-    conn = duckdb.connect('/home/pat/sports_intel/db/features.duckdb')
+def calculate_ev(model_prob, decimal_odds):
+    """
+    Calculates Expected Value (EV).
+    Formula: (Probability_Win * (Decimal_Odds - 1)) - (Probability_Loss * 1)
     
-    # Get active teams
-    teams = [t[0] for t in conn.execute("SELECT DISTINCT team_abbrev FROM nhl_player_game_stats").fetchall()]
+    Returns: Float representing percentage EV (e.g., 0.05 is 5% edge).
+    """
+    if decimal_odds <= 1:
+        return -1.0 # Invalid odds
     
-    profile = []
+    prob_win = model_prob
+    prob_loss = 1 - model_prob
     
-    for team in teams:
-        # Get last 10 games
-        recent = conn.execute(f"SELECT game_id, home_team, away_team FROM nhl_schedule WHERE (home_team = '{team}' OR away_team = '{team}') AND game_date < CURRENT_DATE ORDER BY game_date DESC LIMIT 10").fetchall()
+    # Amount won per unit bet (Odds - 1)
+    amount_won = decimal_odds - 1
+    
+    ev = (prob_win * amount_won) - (prob_loss * 1)
+    return round(ev, 4)
+
+def kelly_criterion(model_prob, decimal_odds, bankroll, fraction=0.25):
+    """
+    Calculates the optimal stake size using Fractional Kelly Criterion.
+    
+    Args:
+        model_prob (float): Internal model probability (0.0 - 1.0)
+        decimal_odds (float): Market decimal odds
+        bankroll (float): Total current bankroll
+        fraction (float): Kelly multiplier (0.25 = Quarter Kelly for risk management)
         
-        stats = {
-            'hdc_for': 0, 'hdc_against': 0, 
-            'trap_for': 0, 'blocks_in_slot': 0,
-            'games': 0
-        }
-        
-        for g in recent:
-            g_id, h_team, a_team = g
-            data = fetch_game_pbp(g_id)
-            if not data: continue
-            stats['games'] += 1
-            
-            # Determine if target team is Home or Away (for tracking "Against" stats)
-            is_home = (h_team == team)
-            # Team ID matching is tricky without IDs. 
-            # Heuristic: We assume the team creates events. 
-            # For "Against" stats, we look for opponent shots.
-            
-            for play in data.get('plays', []):
-                evt = play.get('typeDescKey', '')
-                details = play.get('details', {})
-                zone = get_zone(details.get('xCoord'), details.get('yCoord'))
-                
-                # We need to know WHICH team did the event.
-                # In PBP, 'eventOwnerTeamId' usually tells us. 
-                # Since we don't have a map, we can't perfectly separate FOR/AGAINST in this simple script.
-                # LEVEL 6 SHORTCUT: We count TOTAL game events to verify "Pace".
-                # To be precise, we'd need a team_id map. 
-                # For now, let's focus on the "Game Style" the team plays in.
-                
-                # 1. HDC (Offensive Quality)
-                if evt in ['shot-on-goal', 'goal'] and zone == "INNER_SLOT":
-                    stats['hdc_for'] += 0.5 # We split it 50/50 for the game pace for now
-                    
-                # 2. TRAP (Neutral Zone Clutter)
-                if evt in ['blocked-pass', 'takeaway', 'giveaway'] and zone == "NEUTRAL_ZONE":
-                    stats['trap_for'] += 1
-                
-                # 3. SLOT CLOG (Defensive Structure)
-                if evt == 'blocked-shot' and zone == "INNER_SLOT":
-                    stats['blocks_in_slot'] += 1
+    Returns:
+        float: Recommended wager amount
+    """
+    if decimal_odds <= 1:
+        return 0.0
 
-        if stats['games'] > 0:
-            gp = stats['games']
-            profile.append({
-                'team': team,
-                'hdc_rate': round(stats['hdc_for'] / gp * 2, 2), # x2 to estimate total game HDC pace
-                'trap_index': round(stats['trap_for'] / gp, 2),
-                'slot_clog_index': round(stats['blocks_in_slot'] / gp, 2)
-            })
-            print(f"   -> {team}: Trap {round(stats['trap_for']/gp,1)} | Slot Block {round(stats['blocks_in_slot']/gp,1)}")
+    b = decimal_odds - 1 # Net odds received on the wager
+    p = model_prob
+    q = 1 - p
+    
+    # Full Kelly formula: f* = (bp - q) / b
+    f_star = ((b * p) - q) / b
+    
+    # Apply fractional constraint and bankroll
+    if f_star > 0:
+        stake_percentage = f_star * fraction
+        wager = bankroll * stake_percentage
+        return round(wager, 2)
+    else:
+        return 0.0
 
-    # Save
-    df = pd.DataFrame(profile)
-    conn.execute("CREATE TABLE IF NOT EXISTS team_tactics_v2 AS SELECT * FROM df")
-    conn.execute("DELETE FROM team_tactics_v2")
-    conn.execute("INSERT INTO team_tactics_v2 SELECT * FROM df")
-    conn.close()
-    print("✅ DEFENSIVE METRICS CALCULATED.")
-
-if __name__ == "__main__":
-    process_tactics()
+def assess_edge(model_prob, market_implied_prob):
+    """
+    Simple check to see if Model sees an event as more likely than Market does.
+    """
+    return model_prob > market_implied_prob
