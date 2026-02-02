@@ -1,123 +1,108 @@
 import streamlit as st
 import duckdb
 import pandas as pd
-import plotly.express as px
 from datetime import datetime
 
-# --- CONFIGURATION ---
-DB_PATH = '/home/pat/sports_intel/oracle_data.duckdb'
-PAGE_TITLE = "THE ORACLE // SYNDICATE HUD"
-REFRESH_SECONDS = 60
+st.set_page_config(page_title="THE ORACLE // HUD", layout="wide", page_icon="🧊")
+DB_FILE = "oracle_data.duckdb"
 
-st.set_page_config(
-    page_title="The Oracle",
-    page_icon="🧊",
-    layout="wide",
-    initial_sidebar_state="collapsed"
-)
-
-# --- STYLING ---
+# --- KINGPIN CSS V2 ---
 st.markdown("""
 <style>
-    .metric-card {
-        background-color: #1E1E1E;
-        border: 1px solid #333;
-        padding: 20px;
-        border-radius: 5px;
-        color: #fff;
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto+Mono:wght@400;700&display=swap');
+    
+    .stApp { background-color: #050505; color: #00ff41; }
+    h1, h2, h3 { font-family: 'Permanent Marker', cursive !important; color: #d400ff; }
+    div[data-testid="stMetricValue"] { font-family: 'Roboto Mono', monospace; color: #00ff41; font-size: 2rem !important; }
     .stDataFrame { border: 1px solid #333; }
+    
+    /* CUSTOM TABS */
+    .stTabs [data-baseweb="tab-list"] button [data-testid="stMarkdownContainer"] p {
+        font-size: 1.2rem; font-family: 'Permanent Marker';
+    }
 </style>
 """, unsafe_allow_html=True)
 
-# --- DATA ENGINE ---
-@st.cache_data(ttl=10)
-def load_data():
-    try:
-        con = duckdb.connect(DB_PATH, read_only=True)
-        
-        # Fetch Wagers (The Action)
-        try:
-            df_wagers = con.execute("SELECT * FROM value_wagers ORDER BY date DESC, ev DESC").fetchdf()
-        except:
-            df_wagers = pd.DataFrame()
+# --- HEADER ---
+c1, c2 = st.columns([3, 1])
+with c1:
+    st.title("🧊 THE ORACLE")
+    st.markdown("`SYSTEM STATUS: ONLINE` | `MODE: GOD` | `DATE: " + datetime.now().strftime('%Y-%m-%d') + "`")
+with c2:
+    st.button("🔄 REFRESH INTEL")
 
-        # Fetch Predictions (The Model)
-        try:
-            df_preds = con.execute("SELECT * FROM predictions ORDER BY date DESC").fetchdf()
-        except:
-            df_preds = pd.DataFrame()
+# --- DATA FETCH ---
+con = duckdb.connect(DB_FILE, read_only=True)
+try:
+    games = con.execute("SELECT matchup, proj_home_score, proj_away_score, win_probability, spread_pick, rationale FROM game_predictions").df()
+    props = con.execute("SELECT player, team, prop_type, line, projection, edge, grade, rationale FROM prop_predictions").df()
+    report_df = con.execute("SELECT content FROM ai_reports WHERE date = CURRENT_DATE").df()
+    report = report_df.iloc[0]['content'] if not report_df.empty else "NO INTEL FOUND."
+except Exception as e:
+    st.error(f"DATABASE ERROR: {e}")
+    games, props, report = pd.DataFrame(), pd.DataFrame(), "SYSTEM OFFLINE"
+con.close()
 
-        con.close()
-        return df_wagers, df_preds
-    except Exception as e:
-        st.error(f"Database Connection Error: {e}")
-        return pd.DataFrame(), pd.DataFrame()
+# --- THE WALL (AI INTEL) ---
+st.markdown("---")
+st.subheader("📡 SYNDICATE DISPATCH")
+st.info(report)
 
-# --- MAIN UI ---
-def main():
-    st.title(f"🧊 {PAGE_TITLE}")
-    st.markdown(f"**System Time:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+# --- THE BLACKBOOK (GAMES) ---
+st.markdown("---")
+st.subheader("📓 THE BLACKBOOK (TODAY'S SLATE)")
 
-    df_wagers, df_preds = load_data()
+if not games.empty:
+    st.data_editor(
+        games,
+        column_config={
+            "matchup": "Matchup",
+            "proj_home_score": st.column_config.NumberColumn("Home Proj", format="%.2f"),
+            "proj_away_score": st.column_config.NumberColumn("Away Proj", format="%.2f"),
+            "win_probability": st.column_config.ProgressColumn(
+                "Win %", format="%.1f%%", min_value=0, max_value=100,
+                help="Oracle Confidence Score"
+            ),
+            "spread_pick": "The Play",
+            "rationale": "The Proof"
+        },
+        hide_index=True,
+        use_container_width=True,
+        disabled=True
+    )
+else:
+    st.warning("NO GAMES ON SLATE.")
 
-    # TOP METRICS
-    col1, col2, col3, col4 = st.columns(4)
+# --- THE LAB (PROPS) ---
+st.markdown("---")
+st.subheader("🧪 THE LAB (PLAYER TARGETS)")
+
+# Filter Bar
+col1, col2 = st.columns(2)
+with col1:
+    grade_filter = st.multiselect("FILTER BY GRADE", ["DIAMOND", "GOLD", "SILVER"], default=["DIAMOND", "GOLD"])
+with col2:
+    prop_filter = st.multiselect("PROP TYPE", ["SHOTS", "SAVES"], default=["SHOTS", "SAVES"])
+
+if not props.empty:
+    # Apply Filters
+    filtered_props = props[props['grade'].isin(grade_filter) & props['prop_type'].isin(prop_filter)]
     
-    total_bets = len(df_wagers)
-    pending_risk = df_wagers['wager_amount'].sum() if not df_wagers.empty else 0
-    top_edge = df_wagers['ev'].max() * 100 if not df_wagers.empty else 0
-    active_teams = df_preds['team'].nunique() if not df_preds.empty else 0
-
-    col1.metric("Active Wagers", f"{total_bets}", delta_color="off")
-    col2.metric("Capital at Risk", f"${pending_risk:,.2f}", delta_color="off")
-    col3.metric("Highest Edge", f"{top_edge:.2f}%", delta_color="normal")
-    col4.metric("Teams Tracked", f"{active_teams}", delta_color="off")
-
-    st.markdown("---")
-
-    # SECTION 1: THE ACTION (Value Wagers)
-    st.subheader("💰 LIVE MARKET EDGES")
-    
-    if not df_wagers.empty:
-        # Format for display
-        display_wagers = df_wagers.copy()
-        display_wagers['ev'] = (display_wagers['ev'] * 100).map('{:.2f}%'.format)
-        display_wagers['wager_amount'] = display_wagers['wager_amount'].map('${:,.2f}'.format)
-        display_wagers['model_prob'] = (display_wagers['model_prob'] * 100).map('{:.1f}%'.format)
-        
-        # Color highlight high EV
-        st.dataframe(
-            display_wagers[['date', 'team', 'bookmaker', 'market_odds', 'model_prob', 'ev', 'wager_amount']],
-            use_container_width=True,
-            hide_index=True
-        )
-    else:
-        st.info("No active wagers found. The Oracle is hunting...")
-
-    st.markdown("---")
-
-    # SECTION 2: THE BRAIN (Raw Model Output)
-    col_left, col_right = st.columns([2, 1])
-    
-    with col_left:
-        st.subheader("🧠 MODEL PROBABILITIES")
-        if not df_preds.empty:
-            st.dataframe(df_preds, use_container_width=True, hide_index=True)
-        else:
-            st.text("Model cache is empty.")
-
-    with col_right:
-        st.subheader("📊 DISTRIBUTION")
-        if not df_preds.empty:
-            sport_counts = df_preds['sport'].value_counts()
-            st.bar_chart(sport_counts)
-        else:
-            st.text("No data to visualize.")
-
-    # REFRESH BUTTON
-    if st.button("Refresh Intelligence"):
-        st.rerun()
-
-if __name__ == "__main__":
-    main()
+    st.data_editor(
+        filtered_props,
+        column_config={
+            "player": "Player",
+            "team": "Team",
+            "prop_type": "Type",
+            "line": st.column_config.NumberColumn("Line", format="%.1f"),
+            "projection": st.column_config.NumberColumn("Proj", format="%.2f"),
+            "edge": st.column_config.NumberColumn("Edge", format="%.2f", help="Proj - Line"),
+            "grade": st.column_config.TextColumn("Grade"),
+            "rationale": "The Data"
+        },
+        hide_index=True,
+        use_container_width=True,
+        disabled=True
+    )
+else:
+    st.warning("NO PROPS FOUND. CHECK INGESTION.")
